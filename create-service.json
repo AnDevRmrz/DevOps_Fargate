@@ -1,0 +1,30 @@
+{
+    "serviceName": "python-app-service2",
+    "taskDefinition": "task-app-python:1",
+    "cluster": "cluster-tutorial-fargate",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:522776209406:targetgroup/target-1/d2c1d1c90d309956",
+            "containerName": "python-app",
+            "containerPort": 5000
+        }
+    ],
+    "desiredCount": 1,
+    "launchType": "FARGATE",
+    "schedulingStrategy": "REPLICA",
+    "deploymentController": {
+        "type": "CODE_DEPLOY"
+    },
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                "subnet-062c238046fd39f79",
+                "subnet-0a7751370f0f25aff"
+            ],
+            "securityGroups": [
+                "sg-0d3b9df58c26525e9"
+            ],
+            "assignPublicIp": "ENABLED"
+        }
+    }
+}
